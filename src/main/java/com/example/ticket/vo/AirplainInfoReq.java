@@ -31,6 +31,9 @@ public class AirplainInfoReq {
 	
 	@JsonProperty("seat")
 	private String seat;
+	
+	@JsonProperty("isOneway")
+	private boolean isOneway;
 
 	public AirplainInfoReq() {
 		super();
@@ -38,7 +41,7 @@ public class AirplainInfoReq {
 	}
 
 	public AirplainInfoReq(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat) {
+			String arrivalLocation, int price, String classType, String seat, boolean isOneway) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -48,6 +51,7 @@ public class AirplainInfoReq {
 		this.price = price;
 		this.classType = classType;
 		this.seat = seat;
+		this.isOneway = isOneway;
 	}
 
 	public int getAirplainId() {
@@ -113,6 +117,15 @@ public class AirplainInfoReq {
 	public void setSeat(String seat) {
 		this.seat = seat;
 	}
+
+	public boolean isOneway() {
+		return isOneway;
+	}
+
+	public void setOneway(boolean isOneway) {
+		this.isOneway = isOneway;
+	}
+	
 	
 	
 }

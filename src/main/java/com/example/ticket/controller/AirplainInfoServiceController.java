@@ -25,7 +25,7 @@ public class AirplainInfoServiceController {
 	@PostMapping(value = "airplainInfo/create")
 	public AirplainInfoRes create(@RequestBody AirplainInfoReq req,HttpSession session) {
 		return airplainInfoService.create(req.getDepartureDate(), req.getArriveDate(),
-				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(), req.getSeat());
+				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(), req.getSeat(),req.isOneway());
 	}
 	
 	@PostMapping(value = "airplainInfo/delete")
@@ -35,7 +35,7 @@ public class AirplainInfoServiceController {
 	
 	@PostMapping(value = "airplainInfo/search")
 	public AirplainInfoGetRes search(@RequestBody AirplainInfoSearchReq req) {
-		return airplainInfoService.search(req.getDepartureDate(),req.getArrivalDate(),req.getDepartureLocation(),req.getArrivalLocation(),req.getClassType());	
+		return airplainInfoService.search(req.getDepartureDate(),req.getArrivalDate(),req.getDepartureLocation(),req.getArrivalLocation(),req.getClassType(),req.isOneway());	
 		
 	}
 }

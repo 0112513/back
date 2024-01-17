@@ -23,21 +23,27 @@ public class AirplainInfoSearchReq {
 	
 	@JsonProperty("classType")
 	private String classType;
+	
+	@JsonProperty("isOneway")
+	private boolean isOneway;
 
 	public AirplainInfoSearchReq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
 	public AirplainInfoSearchReq(LocalDate departureDate, LocalDate arrivalDate, String departureLocation,
-			String arrivalLocation, String classType) {
+			String arrivalLocation, String classType, boolean isOneway) {
 		super();
 		this.departureDate = departureDate;
 		this.arrivalDate = arrivalDate;
 		this.departureLocation = departureLocation;
 		this.arrivalLocation = arrivalLocation;
 		this.classType = classType;
+		this.isOneway = isOneway;
 	}
+
 
 	public int getAirplainId() {
 		return airplainId;
@@ -86,4 +92,13 @@ public class AirplainInfoSearchReq {
 	public void setClassType(String classType) {
 		this.classType = classType;
 	}
+
+	public boolean isOneway() {
+		return isOneway;
+	}
+
+	public void setOneway(boolean isOneway) {
+		this.isOneway = isOneway;
+	}
+	
 }
