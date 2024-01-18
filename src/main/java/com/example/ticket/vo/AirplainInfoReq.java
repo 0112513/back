@@ -34,14 +34,28 @@ public class AirplainInfoReq {
 	
 	@JsonProperty("isOneway")
 	private boolean isOneway;
+	
+	@JsonProperty("DA")
+	private String DA;
+	
+	@JsonProperty("AA")
+	private String AA;
+	
+	@JsonProperty("depature_terminal")
+	private int depatureTerminal;
+	
+	@JsonProperty("arrive_terminal")
+	private int arriveTerminal;
 
 	public AirplainInfoReq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	public AirplainInfoReq(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat, boolean isOneway) {
+			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
+			int depatureTerminal, int arriveTerminal) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -52,7 +66,12 @@ public class AirplainInfoReq {
 		this.classType = classType;
 		this.seat = seat;
 		this.isOneway = isOneway;
+		DA = dA;
+		AA = aA;
+		this.depatureTerminal = depatureTerminal;
+		this.arriveTerminal = arriveTerminal;
 	}
+
 
 	public int getAirplainId() {
 		return airplainId;
@@ -125,7 +144,38 @@ public class AirplainInfoReq {
 	public void setOneway(boolean isOneway) {
 		this.isOneway = isOneway;
 	}
+
+	public String getDA() {
+		return DA;
+	}
+
+	public void setDA(String dA) {
+		DA = dA;
+	}
+
+	public String getAA() {
+		return AA;
+	}
+
+	public void setAA(String aA) {
+		AA = aA;
+	}
 	
-	
+	public int getDepatureTerminal() {
+		return depatureTerminal;
+	}
+
+	public void setDepatureTerminal(int depatureTerminal) {
+		this.depatureTerminal = depatureTerminal;
+	}
+
+	public int getArriveTerminal() {
+		return arriveTerminal;
+	}
+
+	public void setArriveTerminal(int arriveTerminal) {
+		this.arriveTerminal = arriveTerminal;
+	}
+
 	
 }

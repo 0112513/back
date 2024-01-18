@@ -42,6 +42,18 @@ public class AirplainInfo {
 	
 	@Column(name = "is_oneway")
 	private boolean isOneway;
+	
+	@Column(name = "DA")
+	private String DA;
+	
+	@Column(name = "AA")
+	private String AA;
+	
+	@Column(name = "depature_terminal")
+	private int depatureTerminal;
+	
+	@Column(name = "arrive_terminal")
+	private int arriveTerminal;
 
 	public AirplainInfo() {
 		super();
@@ -49,7 +61,8 @@ public class AirplainInfo {
 	}
 	
 	public AirplainInfo(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat, boolean isOneway) {
+			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
+			int depatureTerminal, int arriveTerminal) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -60,10 +73,15 @@ public class AirplainInfo {
 		this.classType = classType;
 		this.seat = seat;
 		this.isOneway = isOneway;
+		DA = dA;
+		AA = aA;
+		this.depatureTerminal = depatureTerminal;
+		this.arriveTerminal = arriveTerminal;
 	}
 	
 	public AirplainInfo(LocalDate departureDate, LocalDate arriveDate, String departureLocation, String arrivalLocation,
-			int price, String classType, String seat, boolean isOneway) {
+			int price, String classType, String seat, boolean isOneway, String dA, String aA, int depatureTerminal,
+			int arriveTerminal) {
 		super();
 		this.departureDate = departureDate;
 		this.arriveDate = arriveDate;
@@ -73,6 +91,10 @@ public class AirplainInfo {
 		this.classType = classType;
 		this.seat = seat;
 		this.isOneway = isOneway;
+		DA = dA;
+		AA = aA;
+		this.depatureTerminal = depatureTerminal;
+		this.arriveTerminal = arriveTerminal;
 	}
 
 	public int getAirplainId() {
@@ -145,6 +167,38 @@ public class AirplainInfo {
 
 	public void setIsOneway(boolean isOneway) {
 		this.isOneway = isOneway;
+	}
+
+	public String getDA() {
+		return DA;
+	}
+
+	public void setDA(String dA) {
+		DA = dA;
+	}
+
+	public String getAA() {
+		return AA;
+	}
+
+	public void setAA(String aA) {
+		AA = aA;
+	}
+
+	public int getDepatureTerminal() {
+		return depatureTerminal;
+	}
+
+	public void setDepatureTerminal(int depatureTerminal) {
+		this.depatureTerminal = depatureTerminal;
+	}
+
+	public int getArriveTerminal() {
+		return arriveTerminal;
+	}
+
+	public void setArriveTerminal(int arriveTerminal) {
+		this.arriveTerminal = arriveTerminal;
 	}
 	
 	

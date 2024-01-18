@@ -26,7 +26,7 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 	
 	@Override
 	public AirplainInfoRes create(LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat, boolean isOneway) {
+			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String DA, String AA, int depatureTerminal, int arriveTerminal) {
 		if(departureDate == null || arriveDate == null || !StringUtils.hasText(departureLocation)
 				 || !StringUtils.hasText(arrivalLocation) || price <= 0 || !StringUtils.hasText(classType) || !StringUtils.hasText(seat)) {
 			return new AirplainInfoRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
@@ -35,7 +35,7 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 			return new AirplainInfoRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
 		}
 		try {
-			AirplainInfo item = new AirplainInfo(departureDate,arriveDate,departureLocation,arrivalLocation,price,classType,seat,isOneway);
+			AirplainInfo item = new AirplainInfo(departureDate,arriveDate,departureLocation,arrivalLocation,price,classType,seat,isOneway,DA,AA,depatureTerminal,arriveTerminal);
 			airplainInfoDao.save(item);
 		} catch (Exception e) {
 			return new AirplainInfoRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());
