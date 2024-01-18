@@ -11,7 +11,8 @@ import com.example.ticket.vo.AirplainInfoRes;
 public interface AirplainInfoService {
 
 	public AirplainInfoRes create(LocalDate departureDate, LocalDate arriveDate, String departureLocation
-			, String arrivalLocation, int price, String classType, String seat, boolean isOneway, String DA, String AA, int depatureTerminal, int arriveTerminal); 
+			, String arrivalLocation, int price, String classType, String seat, boolean isOneway, 
+			String DA, String AA, int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime); 
 	
 	public AirplainInfoRes delete(int i);
 	

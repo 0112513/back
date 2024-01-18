@@ -26,16 +26,21 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 	
 	@Override
 	public AirplainInfoRes create(LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String DA, String AA, int depatureTerminal, int arriveTerminal) {
+			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String DA,
+			String AA, int depatureTerminal, int arriveTerminal,  String depatureTime, String arriveTime ) {
 		if(departureDate == null || arriveDate == null || !StringUtils.hasText(departureLocation)
-				 || !StringUtils.hasText(arrivalLocation) || price <= 0 || !StringUtils.hasText(classType) || !StringUtils.hasText(seat)) {
+				 || !StringUtils.hasText(arrivalLocation) || price <= 0 ||
+				 !StringUtils.hasText(classType) || !StringUtils.hasText(seat)
+				 || !StringUtils.hasText(DA) || !StringUtils.hasText(AA) || depatureTerminal <= 0 || arriveTerminal <= 0
+				 || !StringUtils.hasText(depatureTime) || !StringUtils.hasText(arriveTime)) {
 			return new AirplainInfoRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
 		}
 		if(departureDate.isAfter(arriveDate)) {
 			return new AirplainInfoRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
 		}
 		try {
-			AirplainInfo item = new AirplainInfo(departureDate,arriveDate,departureLocation,arrivalLocation,price,classType,seat,isOneway,DA,AA,depatureTerminal,arriveTerminal);
+			AirplainInfo item = new AirplainInfo(departureDate,arriveDate,departureLocation,
+					arrivalLocation,price,classType,seat,isOneway,DA,AA,depatureTerminal,arriveTerminal,depatureTime,arriveTime);
 			airplainInfoDao.save(item);
 		} catch (Exception e) {
 			return new AirplainInfoRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());
@@ -65,7 +70,7 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 		if(departureDate.isAfter(arriveDate)) {
 			return new AirplainInfoGetRes(RtnCode.DATE_FORMIT_ERROR.getCode(), RtnCode.DATE_FORMIT_ERROR.getMessage(),res);
 		}
-		res = airplainInfoDao.findByDepartureDateGreaterThanEqualAndArriveDateLessThanEqualAndDepartureLocationContainingAndArrivalLocationContainingAndClassTypeContaining
+		res = airplainInfoDao.findByDepartureDateAndArriveDateAndDepartureLocationContainingAndArrivalLocationContainingAndClassTypeContaining
 				(departureDate, arriveDate, departureLocation, arrivalLocation, classType);
 		return new AirplainInfoGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
 	}

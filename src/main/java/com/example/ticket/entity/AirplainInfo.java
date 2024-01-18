@@ -54,6 +54,12 @@ public class AirplainInfo {
 	
 	@Column(name = "arrive_terminal")
 	private int arriveTerminal;
+	
+	@Column(name = "depature_time")
+	private String depatureTime;
+	
+	@Column(name = "arrive_time")
+	private String arriveTime;
 
 	public AirplainInfo() {
 		super();
@@ -62,7 +68,7 @@ public class AirplainInfo {
 	
 	public AirplainInfo(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
 			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
-			int depatureTerminal, int arriveTerminal) {
+			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -77,11 +83,13 @@ public class AirplainInfo {
 		AA = aA;
 		this.depatureTerminal = depatureTerminal;
 		this.arriveTerminal = arriveTerminal;
+		this.depatureTime = depatureTime;
+		this.arriveTime = arriveTime;
 	}
 	
 	public AirplainInfo(LocalDate departureDate, LocalDate arriveDate, String departureLocation, String arrivalLocation,
 			int price, String classType, String seat, boolean isOneway, String dA, String aA, int depatureTerminal,
-			int arriveTerminal) {
+			int arriveTerminal, String depatureTime, String arriveTime) {
 		super();
 		this.departureDate = departureDate;
 		this.arriveDate = arriveDate;
@@ -95,6 +103,8 @@ public class AirplainInfo {
 		AA = aA;
 		this.depatureTerminal = depatureTerminal;
 		this.arriveTerminal = arriveTerminal;
+		this.depatureTime = depatureTime;
+		this.arriveTime = arriveTime;
 	}
 
 	public int getAirplainId() {
@@ -200,6 +210,21 @@ public class AirplainInfo {
 	public void setArriveTerminal(int arriveTerminal) {
 		this.arriveTerminal = arriveTerminal;
 	}
-	
+
+	public String getDepatureTime() {
+		return depatureTime;
+	}
+
+	public void setDepatureTime(String depatureTime) {
+		this.depatureTime = depatureTime;
+	}
+
+	public String getArriveTime() {
+		return arriveTime;
+	}
+
+	public void setArriveTime(String arriveTime) {
+		this.arriveTime = arriveTime;
+	}
 	
 }

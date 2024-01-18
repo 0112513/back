@@ -11,7 +11,7 @@ import com.example.ticket.entity.AirplainInfo;
 @Repository
 public interface AirplainInfoDao extends  JpaRepository<AirplainInfo,Integer>{
 	
-	public List<AirplainInfo> findByDepartureDateGreaterThanEqualAndArriveDateLessThanEqualAndDepartureLocationContainingAndArrivalLocationContainingAndClassTypeContaining
+	public List<AirplainInfo> findByDepartureDateAndArriveDateAndDepartureLocationContainingAndArrivalLocationContainingAndClassTypeContaining
 	(LocalDate departureDate, LocalDate arriveDate, String departureLocation
 			, String arrivalLocation, String classType);
 }
