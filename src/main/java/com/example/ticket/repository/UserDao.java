@@ -24,9 +24,16 @@ public interface UserDao extends  JpaRepository<User, Integer>{
 	public boolean existsByAccount(String account);
 	
 	public List<User> findByAccountAndPwd(String account,String pwd);
+	
+	@Query(value = "SELECT * FROM user WHERE"
+			+ " account like concat('%',:inputAccount,'%') and"
+			+ " password like concat('%',:inputPwd,'%') ", nativeQuery = true)
+//	+ " account like case when :inputAccount is null then '%%' else concat('%',:inputAccount,'%') end and"
+//	+ " pwd like case when :inputPwd is null then '%%' else concat('%',:inputPwd,'%') end", nativeQuery = true)
+	public List<User> findByAccountAndPwdTest(@Param("inputAccount") String account, @Param("inputPwd") String pwd);
 
-	@Query(value = "SELECT * FROM user WHERE account LIKE %:account%"
-	        + " AND password LIKE %:pwd%", nativeQuery = true)
-	public List<User> findByLike(@Param("account") String account,
-	        @Param("pwd") String pwd); 
+//	@Query(value = "SELECT * FROM user WHERE account LIKE %:account%"
+//	        + " AND password LIKE %:pwd%", nativeQuery = true)
+//	public List<User> findByLike(@Param("account") String account,
+//	        @Param("pwd") String pwd); 
 }

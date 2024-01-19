@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
 	public UserLoginGetRes search(String account, String pwd) {
 		// 檢查帳號是否存在
 		List<User> res = new ArrayList<>();
-		res = userDao.findByAccountAndPwd(account, pwd);
+		res = userDao.findByAccountAndPwdTest(account, pwd);
 		return new UserLoginGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
 	}
 //	香如讚讚
