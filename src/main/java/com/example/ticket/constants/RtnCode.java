@@ -5,6 +5,7 @@ package com.example.ticket.constants;
 	SUCCESSFUL(200,"Successful!!!"),//
 	PARAM_ERROR(400,"Param error!!"),//
 	ACCOUNT_NOT_FOUND(404,"Account not found!!!!"),
+	ACCOUNT_NOT_EXIST(404,"Account not exist!!!!"),
 	DATE_FORMIT_ERROR(400,"Date format is error!!!"),
 	ACCOUNT_EXISTED(400,"Account existed"),
 	EMAIL_EXISTED(400,"Email existed!!!!"),

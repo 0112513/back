@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ticket.constants.RtnCode;
 import com.example.ticket.ifs.UserService;
+import com.example.ticket.vo.UserLoginGetRes;
 import com.example.ticket.vo.UserLoginReq;
 import com.example.ticket.vo.UserLoginRes;
+import com.example.ticket.vo.UserSearchReq;
 
 @CrossOrigin
 @RestController
@@ -48,7 +50,11 @@ public class UserServiceController {
 	@PostMapping(value = "user/create")
 	public UserLoginRes create(@RequestBody UserLoginReq req) {
 		UserLoginRes res = userService.create(req.getAccount(), req.getPwd(), req.getEmail(), req.getName(), req.getPhone());
-		return res;
-		
+		return res;	
+	}
+	
+	@PostMapping(value = "user/search")
+	public UserLoginGetRes search(@RequestBody UserSearchReq req) {
+		return userService.search(req.getAccount(),req.getPassword());	
 	}
 }

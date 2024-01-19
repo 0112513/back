@@ -13,7 +13,6 @@ public class AirplainInfoGetRes extends AirplainInfoRes{
 		super(code, message);
 		this.airplainInfoList = airplainInfoList;
 	}
-
 	public List<AirplainInfo> getAirplainInfoList() {
 		return airplainInfoList;
 	}

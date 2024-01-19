@@ -1,5 +1,6 @@
 package com.example.ticket.ifs;
 
+import com.example.ticket.vo.UserLoginGetRes;
 import com.example.ticket.vo.UserLoginRes;
 
 public interface UserService {
@@ -8,4 +9,5 @@ public interface UserService {
 	
 	public UserLoginRes create(String account,String pwd,String email,String name,String phone);
 
+	public UserLoginGetRes search(String account, String pwd);
 }
