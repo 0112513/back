@@ -68,4 +68,5 @@ public class UserServiceImpl implements UserService {
 		res = userDao.findByAccountAndPwd(account, pwd);
 		return new UserLoginGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
 	}
+//	香如讚讚
 }
