@@ -41,14 +41,17 @@ public class Order {
 	
 	@Column(name = "price")
 	private int price;
+	
+	@Column(name = "account")
+	private String account;
 
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Order(int orderId, boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType, int price) {
+			String arrivalLocation, String departureLocation, String classType, int price, String account) {
 		super();
 		this.orderId = orderId;
 		this.oneway = oneway;
@@ -59,12 +62,11 @@ public class Order {
 		this.departureLocation = departureLocation;
 		this.classType = classType;
 		this.price = price;
+		this.account = account;
 	}
 	
-
-
 	public Order(boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType, int price) {
+			String arrivalLocation, String departureLocation, String classType, int price, String account) {
 		super();
 		this.oneway = oneway;
 		this.numberOfPeople = numberOfPeople;
@@ -74,6 +76,7 @@ public class Order {
 		this.departureLocation = departureLocation;
 		this.classType = classType;
 		this.price = price;
+		this.account = account;
 	}
 
 	public int getOrderId() {
@@ -146,6 +149,14 @@ public class Order {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	
 }

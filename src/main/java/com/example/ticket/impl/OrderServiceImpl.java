@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderRes create(boolean oneway,int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType,int price) {
+			String arrivalLocation, String departureLocation, String classType,int price,String account) {
 		if(numberOfPeople <= 0 ||  arrivalDate == null || departureDate == null
 			||!StringUtils.hasText(arrivalLocation) || !StringUtils.hasText(departureLocation) || !StringUtils.hasText(classType)) {
 			return new OrderRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 			return new OrderRes(RtnCode.DATE_FORMIT_ERROR.getCode(), RtnCode.DATE_FORMIT_ERROR.getMessage());
 		}
 		try {
-			Order item = new Order(oneway, numberOfPeople,arrivalDate,departureDate,arrivalLocation,departureLocation,classType, price);
+			Order item = new Order(oneway, numberOfPeople,arrivalDate,departureDate,arrivalLocation,departureLocation,classType,price,account);
 			orderDao.save(item);
 		} catch (Exception e) {
 			 return new OrderRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());
@@ -60,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderGetRes search(int orderId, LocalDate arrivalDate, LocalDate departureDate, String arrivalLocation,
-			String departureLocation) {
+			String departureLocation,String account) {
 		departureDate = departureDate== null ? LocalDate.of(1970, 01, 01) : departureDate;
 		arrivalDate = arrivalDate== null ? LocalDate.of(2099, 12, 31) : arrivalDate;
 		arrivalLocation = arrivalLocation== null ? "" : arrivalLocation;
@@ -68,12 +68,9 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> res = new ArrayList<>();
 		if(departureDate.isAfter(arrivalDate)) {
 			return new OrderGetRes(RtnCode.DATE_FORMIT_ERROR.getCode(), RtnCode.DATE_FORMIT_ERROR.getMessage(),res);
+		}else {
+			res = orderDao.findByLike(arrivalDate, departureDate, arrivalLocation, departureLocation, account);
 		}
-//		if(!orderDao.existsById(orderId)) {
-//	        return new OrderGetRes(RtnCode.ORDER_IS_NOT_EXIST.getCode(), RtnCode.ORDER_IS_NOT_EXIST.getMessage(),res);
-//		}
-		res = orderDao.findByArrivalDateLessThanEqualAndDepartureDateGreaterThanEqualAndArrivalLocationContainingAndDepartureLocationContaining
-				(arrivalDate, departureDate, arrivalLocation, departureLocation);
 		return new OrderGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(),res);
 	}
 

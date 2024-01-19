@@ -21,15 +21,18 @@ public class OrderSearchReq {
 	@JsonProperty("departureLocation")
 	private String departureLocation;
 	
-
+	@JsonProperty("account")
+	private String account;
+	
 	public OrderSearchReq(int orderId, LocalDate arrivalDate, LocalDate departureDate, String arrivalLocation,
-			String departureLocation) {
+			String departureLocation, String account) {
 		super();
 		this.orderId = orderId;
 		this.arrivalDate = arrivalDate;
 		this.departureDate = departureDate;
 		this.arrivalLocation = arrivalLocation;
 		this.departureLocation = departureLocation;
+		this.account = account;
 	}
 
 	public OrderSearchReq() {
@@ -76,5 +79,13 @@ public class OrderSearchReq {
 	public void setDepartureLocation(String departureLocation) {
 		this.departureLocation = departureLocation;
 	}
-		
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	
 }

@@ -67,11 +67,11 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 		departureLocation = departureLocation== null ? "" : departureLocation;
 		classType = classType== null ? "" : classType;
 		List<AirplainInfo> res = new ArrayList<>();
-		if(departureDate.isAfter(arriveDate)) {
+		if(departureDate.isAfter(arriveDate)) {	
 			return new AirplainInfoGetRes(RtnCode.DATE_FORMIT_ERROR.getCode(), RtnCode.DATE_FORMIT_ERROR.getMessage(),res);
+		}else {
+			res = airplainInfoDao.findByLike(departureDate, arriveDate, departureLocation, arrivalLocation, classType);
 		}
-		res = airplainInfoDao.findByDepartureDateAndArriveDateAndDepartureLocationContainingAndArrivalLocationContainingAndClassTypeContaining
-				(departureDate, arriveDate, departureLocation, arrivalLocation, classType);
 		return new AirplainInfoGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
 	}
 }
