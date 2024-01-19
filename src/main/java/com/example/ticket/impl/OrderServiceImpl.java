@@ -61,8 +61,8 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderGetRes search(int orderId, LocalDate arrivalDate, LocalDate departureDate, String arrivalLocation,
 			String departureLocation,String account) {
-		departureDate = departureDate== null ? LocalDate.of(1970, 01, 01) : departureDate;
 		arrivalDate = arrivalDate== null ? LocalDate.of(2099, 12, 31) : arrivalDate;
+		departureDate = departureDate== null ? LocalDate.of(1970, 01, 01) : departureDate;
 		arrivalLocation = arrivalLocation== null ? "" : arrivalLocation;
 		departureLocation = departureLocation== null ? "" : departureLocation;
 		List<Order> res = new ArrayList<>();

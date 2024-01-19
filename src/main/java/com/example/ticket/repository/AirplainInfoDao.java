@@ -29,10 +29,10 @@ public interface AirplainInfoDao extends  JpaRepository<AirplainInfo,Integer>{
 //			@Param("arrivalLocation") String arrivalLocation,@Param("classType") String classType);
 	
 	@Query(value = "SELECT * FROM airplain_info WHERE departure_date >= :departureDate"
-	        + " AND arrival_date <= :arrivalDate"
-	        + " AND departure_location LIKE %:departureLocation%"
-	        + " AND arrival_location LIKE %:arrivalLocation%"
-	        + " AND class_type LIKE %:classType%", nativeQuery = true)
+	        + " OR arrival_date <= :arrivalDate"
+	        + " OR departure_location LIKE %:departureLocation%"
+	        + " OR arrival_location LIKE %:arrivalLocation%"
+	        + " OR class_type LIKE %:classType%", nativeQuery = true)
 	public List<AirplainInfo> findByLike(@Param("departureDate") LocalDate departureDate,
 	        @Param("arrivalDate") LocalDate arriveDate, @Param("departureLocation") String departureLocation,
 	        @Param("arrivalLocation") String arrivalLocation, @Param("classType") String classType);
