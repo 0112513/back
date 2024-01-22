@@ -34,13 +34,16 @@ public class User {
 	
 	@Column(name = "point")
 	private int point;
+	
+	@Column(name = "age")
+	private int age;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public User(int userId, String account, String pwd, String email, String name, String phone, int point) {
+	
+	public User(int userId, String account, String pwd, String email, String name, String phone, int point, int age) {
 		super();
 		this.userId = userId;
 		this.account = account;
@@ -49,15 +52,17 @@ public class User {
 		this.name = name;
 		this.phone = phone;
 		this.point = point;
+		this.age = age;
 	}
-
-	public User(String account, String pwd, String email, String name, String phone) {
+	
+	public User(String account, String pwd, String email, String name, String phone, int age) {
 		super();
 		this.account = account;
 		this.pwd = pwd;
 		this.email = email;
 		this.name = name;
 		this.phone = phone;
+		this.age = age;
 	}
 
 	public int getUserId() {

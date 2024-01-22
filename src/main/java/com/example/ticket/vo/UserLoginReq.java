@@ -18,6 +18,9 @@ public class UserLoginReq {
 	
 	@JsonProperty("phone")
 	private String phone;
+	
+	@JsonProperty("age")
+	private int age;
 
 	public String getAccount() {
 		return account;
@@ -58,6 +61,13 @@ public class UserLoginReq {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 	
 }

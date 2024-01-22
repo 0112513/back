@@ -60,6 +60,9 @@ public class AirplainInfo {
 	
 	@Column(name = "arrive_time")
 	private String arriveTime;
+	
+	@Column(name = "airplain_type")
+	private String airplainType;
 
 	public AirplainInfo() {
 		super();
@@ -68,7 +71,7 @@ public class AirplainInfo {
 	
 	public AirplainInfo(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
 			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
-			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime) {
+			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String airplainType) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -85,11 +88,12 @@ public class AirplainInfo {
 		this.arriveTerminal = arriveTerminal;
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
+		this.airplainType = airplainType;
 	}
 	
 	public AirplainInfo(LocalDate departureDate, LocalDate arriveDate, String departureLocation, String arrivalLocation,
 			int price, String classType, String seat, boolean isOneway, String dA, String aA, int depatureTerminal,
-			int arriveTerminal, String depatureTime, String arriveTime) {
+			int arriveTerminal, String depatureTime, String arriveTime, String airplainType) {
 		super();
 		this.departureDate = departureDate;
 		this.arriveDate = arriveDate;
@@ -105,6 +109,7 @@ public class AirplainInfo {
 		this.arriveTerminal = arriveTerminal;
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
+		this.airplainType = airplainType;
 	}
 
 	public int getAirplainId() {
@@ -225,6 +230,14 @@ public class AirplainInfo {
 
 	public void setArriveTime(String arriveTime) {
 		this.arriveTime = arriveTime;
+	}
+
+	public String getAirplainType() {
+		return airplainType;
+	}
+
+	public void setAirplainType(String airplainType) {
+		this.airplainType = airplainType;
 	}
 	
 }

@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserLoginRes create(String account, String pwd, String email, String name, String phone) {
+	public UserLoginRes create(String account, String pwd, String email, String name, String phone, int age) {
 		if (!StringUtils.hasText(account) || !StringUtils.hasText(pwd) || !StringUtils.hasText(email)
 				|| !StringUtils.hasText(name) || !StringUtils.hasText(phone)) { // 排除法:帳號或密碼不能為空(沒有內容時)
 																				// StringUtils不能為空或空字串
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 		if (userDao.existsByAccount(account)) {
 			return new UserLoginRes(RtnCode.ACCOUNT_EXISTED);
 		}
-		userDao.save(new User(account, pwd, email, name, phone));
+		userDao.save(new User(account, pwd, email, name, phone,age));
 //		userDao.save(new User(account, encoder.encode(pwd),email,name,phone));
 		return new UserLoginRes(RtnCode.SUCCESSFUL);
 	}

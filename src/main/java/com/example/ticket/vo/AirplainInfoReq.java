@@ -52,6 +52,9 @@ public class AirplainInfoReq {
 	
 	@JsonProperty("arrive_time")
 	private String arriveTime;
+	
+	@JsonProperty("airplain_type")
+	private String airplainType;
 
 	public AirplainInfoReq() {
 		super();
@@ -60,7 +63,7 @@ public class AirplainInfoReq {
 	
 	public AirplainInfoReq(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
 			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
-			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime) {
+			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String airplainType) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -77,6 +80,7 @@ public class AirplainInfoReq {
 		this.arriveTerminal = arriveTerminal;
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
+		this.airplainType = airplainType;
 	}
 
 	public int getAirplainId() {
@@ -197,6 +201,14 @@ public class AirplainInfoReq {
 
 	public void setArriveTime(String arriveTime) {
 		this.arriveTime = arriveTime;
+	}
+
+	public String getAirplainType() {
+		return airplainType;
+	}
+
+	public void setAirplainType(String airplainType) {
+		this.airplainType = airplainType;
 	}
 	
 }
