@@ -19,7 +19,7 @@ import com.example.ticket.vo.UserLoginRes;
 @Service
 public class UserServiceImpl implements UserService {
 
-	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 	@Autowired // 叫出Dao2的方法
 	private UserDao userDao;
@@ -36,9 +36,6 @@ public class UserServiceImpl implements UserService {
 		}
 		if (user == null) {
 			return new UserLoginRes(RtnCode.ACCOUNT_NOT_FOUND);
-		}
-		if (!encoder.matches(pwd, user.getPwd())) {
-			return new UserLoginRes(RtnCode.ACCOUNT_NOT_FOUND);// !res 等同於 res == false //失敗
 		}
 		if (!userDao.existsByAccount(account)) {
 			return new UserLoginRes(RtnCode.ACCOUNT_NOT_EXIST);
@@ -66,6 +63,9 @@ public class UserServiceImpl implements UserService {
 		// 檢查帳號是否存在
 		List<User> res = new ArrayList<>();
 		res = userDao.findByAccountAndPwdTest(account, pwd);
+		if (!userDao.existsByAccount(account)) {
+			return new UserLoginGetRes(RtnCode.ACCOUNT_NOT_EXIST.getCode(),RtnCode.ACCOUNT_NOT_EXIST.getMessage(),res);
+		}
 		return new UserLoginGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
 	}
 //	香如讚讚
