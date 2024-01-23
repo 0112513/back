@@ -21,6 +21,9 @@ public class UserLoginReq {
 	
 	@JsonProperty("age")
 	private int age;
+	
+	@JsonProperty("birthday")
+	private String birthday;
 
 	public String getAccount() {
 		return account;
@@ -68,6 +71,14 @@ public class UserLoginReq {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 	
 }

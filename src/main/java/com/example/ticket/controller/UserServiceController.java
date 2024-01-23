@@ -49,7 +49,7 @@ public class UserServiceController {
 	
 	@PostMapping(value = "user/create")
 	public UserLoginRes create(@RequestBody UserLoginReq req) {
-		UserLoginRes res = userService.create(req.getAccount(), req.getPwd(), req.getEmail(), req.getName(), req.getPhone(),req.getAge());
+		UserLoginRes res = userService.create(req.getAccount(), req.getPwd(), req.getEmail(), req.getName(), req.getPhone(),req.getAge(),req.getBirthday());
 		return res;	
 	}
 	
