@@ -59,8 +59,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public OrderGetRes search(int orderId, LocalDate arrivalDate, LocalDate departureDate, String arrivalLocation,
-			String departureLocation,String account) {
+	public OrderGetRes search(LocalDate departureDate, LocalDate arrivalDate, String departureLocation, String arrivalLocation, String account) {
 		arrivalDate = arrivalDate== null ? LocalDate.of(2099, 12, 31) : arrivalDate;
 		departureDate = departureDate== null ? LocalDate.of(1970, 01, 01) : departureDate;
 		arrivalLocation = arrivalLocation== null ? "" : arrivalLocation;
@@ -69,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 		if(departureDate.isAfter(arrivalDate)) {
 			return new OrderGetRes(RtnCode.DATE_FORMIT_ERROR.getCode(), RtnCode.DATE_FORMIT_ERROR.getMessage(),res);
 		}else {
-			res = orderDao.findByLike(arrivalDate, departureDate, arrivalLocation, departureLocation, account);
+			res = orderDao.findByLike(departureDate, arrivalDate, departureLocation, arrivalLocation, account);
 		}
 		return new OrderGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(),res);
 	}

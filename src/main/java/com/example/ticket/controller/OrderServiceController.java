@@ -43,6 +43,6 @@ public class OrderServiceController {
 	
 	@PostMapping(value = "order/search")
 	public OrderGetRes search(@RequestBody OrderSearchReq req) {
-		return orderService.search(req.getOrderId(),req.getArrivalDate(),req.getDepartureDate(),req.getArrivalLocation(),req.getDepartureLocation(),req.getAccount());	
+		return orderService.search(req.getDepartureDate(),req.getArrivalDate(),req.getDepartureLocation(),req.getArrivalLocation(),req.getAccount());	
 	}
 }

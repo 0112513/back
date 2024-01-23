@@ -12,6 +12,6 @@ public interface OrderService {
 	
 	public OrderRes delete(int i);
 	
-	public OrderGetRes search(int orderId,LocalDate arrivalDate,LocalDate departureDate,
-			String arrivalLocation,String departureLocation,String account);
+	public OrderGetRes search(LocalDate departureDate,LocalDate arrivalDate,
+			String departureLocation,String arrivalLocation, String account);
 }
