@@ -31,7 +31,7 @@ public class OrderServiceController {
 			 return new OrderRes(RtnCode.PLEASE_LOGIN_FIRST.getCode(),RtnCode.PLEASE_LOGIN_FIRST.getMessage());
 		 }
 		return orderService.create(req.isOneway(),req.getNumberOfPeople(),req.getArrivalDate(),req.getDepartureDate(),req.getArrivalLocation(),
-				req.getDepartureLocation(),req.getClassType(),req.getPrice(),req.getAccount());
+				req.getDepartureLocation(),req.getClassType(),req.getPrice(),req.getAccount(),req.getDepatureTime(),req.getArriveTime());
 //		return orderService.create(0,0,req.getArrivalDate(),req.getDepartureDate(),"test",
 //				"test","test",false);
 	}

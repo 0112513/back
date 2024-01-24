@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderRes create(boolean oneway,int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType,int price,String account) {
+			String arrivalLocation, String departureLocation, String classType,int price,String account, String depatureTime, String arriveTime) {
 		if(numberOfPeople <= 0 ||  arrivalDate == null || departureDate == null
 			||!StringUtils.hasText(arrivalLocation) || !StringUtils.hasText(departureLocation) || !StringUtils.hasText(classType)) {
 			return new OrderRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 			return new OrderRes(RtnCode.DATE_FORMIT_ERROR.getCode(), RtnCode.DATE_FORMIT_ERROR.getMessage());
 		}
 		try {
-			Order item = new Order(oneway, numberOfPeople,arrivalDate,departureDate,arrivalLocation,departureLocation,classType,price,account);
+			Order item = new Order(oneway, numberOfPeople,arrivalDate,departureDate,arrivalLocation,departureLocation,classType,price,account,depatureTime,arriveTime);
 			orderDao.save(item);
 		} catch (Exception e) {
 			 return new OrderRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());

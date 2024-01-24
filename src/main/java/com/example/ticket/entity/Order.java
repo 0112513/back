@@ -44,6 +44,12 @@ public class Order {
 	
 	@Column(name = "account")
 	private String account;
+	
+	@Column(name = "depature_time")
+	private String depatureTime;
+	
+	@Column(name = "arrive_time")
+	private String arriveTime;
 
 	public Order() {
 		super();
@@ -51,7 +57,8 @@ public class Order {
 	}
 	
 	public Order(int orderId, boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType, int price, String account) {
+			String arrivalLocation, String departureLocation, String classType, int price, String account,
+			String depatureTime, String arriveTime) {
 		super();
 		this.orderId = orderId;
 		this.oneway = oneway;
@@ -63,10 +70,13 @@ public class Order {
 		this.classType = classType;
 		this.price = price;
 		this.account = account;
+		this.depatureTime = depatureTime;
+		this.arriveTime = arriveTime;
 	}
 	
 	public Order(boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType, int price, String account) {
+			String arrivalLocation, String departureLocation, String classType, int price, String account,
+			String depatureTime, String arriveTime) {
 		super();
 		this.oneway = oneway;
 		this.numberOfPeople = numberOfPeople;
@@ -77,6 +87,8 @@ public class Order {
 		this.classType = classType;
 		this.price = price;
 		this.account = account;
+		this.depatureTime = depatureTime;
+		this.arriveTime = arriveTime;
 	}
 
 	public int getOrderId() {
@@ -157,6 +169,22 @@ public class Order {
 
 	public void setAccount(String account) {
 		this.account = account;
+	}
+
+	public String getDepatureTime() {
+		return depatureTime;
+	}
+
+	public void setDepatureTime(String depatureTime) {
+		this.depatureTime = depatureTime;
+	}
+
+	public String getArriveTime() {
+		return arriveTime;
+	}
+
+	public void setArriveTime(String arriveTime) {
+		this.arriveTime = arriveTime;
 	}
 	
 }

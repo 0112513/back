@@ -36,8 +36,15 @@ public class OrderReq {
 	@JsonProperty("account")
 	private String account;
 	
+	@JsonProperty("depatureTime")
+	private String depatureTime;
+	
+	@JsonProperty("arriveTime")
+	private String arriveTime;
+	
 	public OrderReq(int orderId, boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType, int price, String account) {
+			String arrivalLocation, String departureLocation, String classType, int price, String account,
+			String depatureTime, String arriveTime) {
 		super();
 		this.orderId = orderId;
 		this.oneway = oneway;
@@ -49,10 +56,13 @@ public class OrderReq {
 		this.classType = classType;
 		this.price = price;
 		this.account = account;
+		this.depatureTime = depatureTime;
+		this.arriveTime = arriveTime;
 	}
 	
 	public OrderReq(boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
-			String arrivalLocation, String departureLocation, String classType, int price, String account) {
+			String arrivalLocation, String departureLocation, String classType, int price, String account,
+			String depatureTime, String arriveTime) {
 		super();
 		this.oneway = oneway;
 		this.numberOfPeople = numberOfPeople;
@@ -63,6 +73,8 @@ public class OrderReq {
 		this.classType = classType;
 		this.price = price;
 		this.account = account;
+		this.depatureTime = depatureTime;
+		this.arriveTime = arriveTime;
 	}
 
 	public OrderReq() {
@@ -148,6 +160,22 @@ public class OrderReq {
 
 	public void setAccount(String account) {
 		this.account = account;
+	}
+
+	public String getDepatureTime() {
+		return depatureTime;
+	}
+
+	public void setDepatureTime(String depatureTime) {
+		this.depatureTime = depatureTime;
+	}
+
+	public String getArriveTime() {
+		return arriveTime;
+	}
+
+	public void setArriveTime(String arriveTime) {
+		this.arriveTime = arriveTime;
 	}
 	
 }
