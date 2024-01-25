@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ticket.ifs.AirplainInfoService;
@@ -39,5 +40,14 @@ public class AirplainInfoServiceController {
 	public AirplainInfoGetRes search(@RequestBody AirplainInfoSearchReq req) {
 		return airplainInfoService.search(req.getDepartureDate(),req.getArrivalDate(),req.getDepartureLocation(),req.getArrivalLocation(),req.getClassType(),req.isOneway());	
 		
+	}
+	
+	@PostMapping(value = "airplainInfo/update")
+	public AirplainInfoRes update(@RequestBody AirplainInfoReq req) {
+		return airplainInfoService.update(req.getAirplainId(),req.getDepartureDate(), req.getArriveDate(),
+				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(),
+				req.getSeat(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
+				req.getDepatureTime(),req.getArriveTime(),req.getAirplainType());
+	
 	}
 }

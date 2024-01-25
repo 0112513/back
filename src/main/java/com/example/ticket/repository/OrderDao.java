@@ -28,7 +28,7 @@ public interface OrderDao extends JpaRepository<Order, Integer> {
 	        + " AND arrival_date <= :arrivalDate"
 	        + " AND departure_location LIKE %:departureLocation%"
 	        + " AND arrival_location LIKE %:arrivalLocation%"
-	        + " OR account LIKE %:account%", nativeQuery = true)
+	        + " AND account LIKE %:account%", nativeQuery = true)
 	public List<Order> findByLike(@Param("departureDate") LocalDate departureDate,
 	        @Param("arrivalDate") LocalDate arrivalDate, @Param("departureLocation") String departureLocation,
 	        @Param("arrivalLocation") String arrivalLocation, @Param("account") String account); 
