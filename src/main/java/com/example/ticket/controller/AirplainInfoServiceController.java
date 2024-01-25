@@ -28,7 +28,7 @@ public class AirplainInfoServiceController {
 		return airplainInfoService.create(req.getDepartureDate(), req.getArriveDate(),
 				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(),
 				req.getSeat(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
-				req.getDepatureTime(),req.getArriveTime(),req.getAirplainType());
+				req.getDepatureTime(),req.getArriveTime(),req.getDepatureAirport(),req.getArriveAirport(),req.getAirplainType());
 	}
 	
 	@PostMapping(value = "airplainInfo/delete")
@@ -47,7 +47,7 @@ public class AirplainInfoServiceController {
 		return airplainInfoService.update(req.getAirplainId(),req.getDepartureDate(), req.getArriveDate(),
 				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(),
 				req.getSeat(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
-				req.getDepatureTime(),req.getArriveTime(),req.getAirplainType());
+				req.getDepatureTime(),req.getArriveTime(),req.getDepatureAirport(),req.getArriveAirport(),req.getAirplainType());
 	
 	}
 }

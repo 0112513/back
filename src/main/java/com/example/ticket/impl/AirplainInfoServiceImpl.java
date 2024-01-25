@@ -28,7 +28,7 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 	@Override
 	public AirplainInfoRes create(LocalDate departureDate, LocalDate arriveDate, String departureLocation,
 			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String DA,
-			String AA, int depatureTerminal, int arriveTerminal,  String depatureTime, String arriveTime, String airplainType ) {
+			String AA, int depatureTerminal, int arriveTerminal,  String depatureTime, String arriveTime, String depatureAirport, String arriveAirport, String airplainType ) {
 		if(departureDate == null || arriveDate == null || !StringUtils.hasText(departureLocation)
 				 || !StringUtils.hasText(arrivalLocation) || price <= 0 ||
 				 !StringUtils.hasText(classType) || !StringUtils.hasText(seat)
@@ -41,7 +41,7 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 		}
 		try {
 			AirplainInfo item = new AirplainInfo(departureDate,arriveDate,departureLocation,
-					arrivalLocation,price,classType,seat,isOneway,DA,AA,depatureTerminal,arriveTerminal,depatureTime,arriveTime,airplainType);
+					arrivalLocation,price,classType,seat,isOneway,DA,AA,depatureTerminal,arriveTerminal,depatureTime,arriveTime,depatureAirport,arriveAirport,airplainType);
 			airplainInfoDao.save(item);
 		} catch (Exception e) {
 			return new AirplainInfoRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());
@@ -79,7 +79,8 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 	@Override
 	public AirplainInfoRes update(int airplainId,LocalDate departureDate, LocalDate arriveDate, String departureLocation,
 			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String DA, String AA,
-			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String airplainType) {
+			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, 
+			String depatureAirport, String arriveAirport,String airplainType) {
 		if(departureDate == null || arriveDate == null || !StringUtils.hasText(departureLocation)
 				 || !StringUtils.hasText(arrivalLocation) || price <= 0 ||
 				 !StringUtils.hasText(classType) || !StringUtils.hasText(seat)
@@ -122,6 +123,12 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 		if(StringUtils.hasText(arriveTime)) {
 			airplainInfo.setArriveTime(arriveTime);
 		}
+		if(StringUtils.hasText(depatureAirport)) {
+			airplainInfo.setArriveTime(depatureAirport);
+		}
+		if(StringUtils.hasText(arriveAirport)) {
+			airplainInfo.setArriveTime(arriveAirport);
+		}
 		if(StringUtils.hasText(airplainType)) {
 			airplainInfo.setAirplainType(airplainType);
 		}
@@ -129,7 +136,7 @@ public class AirplainInfoServiceImpl implements AirplainInfoService{
 		try {
 			AirplainInfo res = airplainInfoDao.save(new AirplainInfo(airplainId,departureDate,arriveDate,departureLocation,
 					arrivalLocation,price,classType,seat,isOneway,DA,AA,
-					depatureTerminal,arriveTerminal,depatureTime,arriveTime,airplainType));
+					depatureTerminal,arriveTerminal,depatureTime,arriveTime,depatureAirport,arriveAirport,airplainType));
 		} catch (Exception e) {
 			return new AirplainInfoRes(RtnCode.AIRPLAININFO_UPDATE_ERROR.getCode(), RtnCode.AIRPLAININFO_UPDATE_ERROR.getMessage());
 		}

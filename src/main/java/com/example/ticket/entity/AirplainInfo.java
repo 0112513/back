@@ -61,6 +61,12 @@ public class AirplainInfo {
 	@Column(name = "arrive_time")
 	private String arriveTime;
 	
+	@Column(name = "depature_airport")
+	private String depatureAirport;
+	
+	@Column(name = "arrive_airport")
+	private String arriveAirport;
+	
 	@Column(name = "airplain_type")
 	private String airplainType;
 
@@ -71,7 +77,8 @@ public class AirplainInfo {
 	
 	public AirplainInfo(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
 			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
-			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String airplainType) {
+			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String depatureAirport,
+			String arriveAirport, String airplainType) {
 		super();
 		this.airplainId = airplainId;
 		this.departureDate = departureDate;
@@ -88,12 +95,15 @@ public class AirplainInfo {
 		this.arriveTerminal = arriveTerminal;
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
+		this.depatureAirport = depatureAirport;
+		this.arriveAirport = arriveAirport;
 		this.airplainType = airplainType;
 	}
 	
 	public AirplainInfo(LocalDate departureDate, LocalDate arriveDate, String departureLocation, String arrivalLocation,
 			int price, String classType, String seat, boolean isOneway, String dA, String aA, int depatureTerminal,
-			int arriveTerminal, String depatureTime, String arriveTime, String airplainType) {
+			int arriveTerminal, String depatureTime, String arriveTime, String depatureAirport, String arriveAirport,
+			String airplainType) {
 		super();
 		this.departureDate = departureDate;
 		this.arriveDate = arriveDate;
@@ -109,6 +119,8 @@ public class AirplainInfo {
 		this.arriveTerminal = arriveTerminal;
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
+		this.depatureAirport = depatureAirport;
+		this.arriveAirport = arriveAirport;
 		this.airplainType = airplainType;
 	}
 
@@ -238,6 +250,22 @@ public class AirplainInfo {
 
 	public void setAirplainType(String airplainType) {
 		this.airplainType = airplainType;
+	}
+
+	public String getDepatureAirport() {
+		return depatureAirport;
+	}
+
+	public void setDepatureAirport(String depatureAirport) {
+		this.depatureAirport = depatureAirport;
+	}
+
+	public String getArriveAirport() {
+		return arriveAirport;
+	}
+
+	public void setArriveAirport(String arriveAirport) {
+		this.arriveAirport = arriveAirport;
 	}
 	
 }
