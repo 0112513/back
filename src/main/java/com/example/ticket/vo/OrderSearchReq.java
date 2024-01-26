@@ -9,16 +9,16 @@ public class OrderSearchReq {
 	@JsonProperty("orderId")
 	private int orderId;
 	
-	@JsonProperty("arrivalDate")
+	@JsonProperty("arrival_date")
 	private LocalDate arrivalDate;
 	
-	@JsonProperty("departureDate")
+	@JsonProperty("departure_date")
 	private LocalDate departureDate;
 	
-	@JsonProperty("arrivalLocation")
+	@JsonProperty("arrival_location")
 	private String arrivalLocation;
 	
-	@JsonProperty("departureLocation")
+	@JsonProperty("departure_location")
 	private String departureLocation;
 	
 	@JsonProperty("account")

@@ -19,6 +19,8 @@ package com.example.ticket.constants;
 	STRING_PARSER_ERROR(400,"String parser"),
 	PLEASE_LOGIN_FIRST(400,"Please login first!!!!"),
 	AIRPLAININFO_UPDATE_ERROR(400,"AirplainInfo update error!!"),
+	ORDER_NOT_FOUND(400,"Order not found!!!!"),
+	ORDER_DELETE_ERROR(400,"Order delete error!!!"),
 	ORDER_EXISTED(400,"Order existed!!!!");
 
 	private int code;

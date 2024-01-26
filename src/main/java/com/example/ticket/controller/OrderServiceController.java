@@ -31,14 +31,14 @@ public class OrderServiceController {
 			 return new OrderRes(RtnCode.PLEASE_LOGIN_FIRST.getCode(),RtnCode.PLEASE_LOGIN_FIRST.getMessage());
 		 }
 		return orderService.create(req.isOneway(),req.getNumberOfPeople(),req.getArrivalDate(),req.getDepartureDate(),req.getArrivalLocation(),
-				req.getDepartureLocation(),req.getClassType(),req.getPrice(),req.getAccount(),req.getDepatureTime(),req.getArriveTime());
+				req.getDepartureLocation(),req.getClassType(),req.getPrice(),req.getAccount(),req.getDepatureTime(),req.getArriveTime(),req.getAddPeople());
 //		return orderService.create(0,0,req.getArrivalDate(),req.getDepartureDate(),"test",
 //				"test","test",false);
 	}
 
 	@PostMapping(value = "order/delete")
 	public OrderRes delete(@RequestBody DeleteOrderReq req) {
-		return orderService.delete(req.getOrderId());		
+		return orderService.delete(req.getOrderId(),req.getAccount());		
 	}
 	
 	@PostMapping(value = "order/search")
