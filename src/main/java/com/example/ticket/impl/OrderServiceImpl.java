@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
 		if(numberOfPeople <= 0 ||  arrivalDate == null || departureDate == null
 			||!StringUtils.hasText(arrivalLocation) || !StringUtils.hasText(departureLocation) || !StringUtils.hasText(classType)
 			 ||  price <= 0 || !StringUtils.hasText(account) ||!StringUtils.hasText(depatureTime) || !StringUtils.hasText(arriveTime)
-			 || !StringUtils.hasText(addPeople) || !StringUtils.hasText(seat)) {
+			 || !StringUtils.hasText(seat)) {
 			return new OrderRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
 		}
 		if(departureDate.isAfter(arrivalDate)) {

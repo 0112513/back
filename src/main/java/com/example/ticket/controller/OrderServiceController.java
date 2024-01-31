@@ -26,15 +26,13 @@ public class OrderServiceController {
 	
 	@PostMapping(value = "order/create")
 	public OrderRes create(@RequestBody OrderReq req,HttpSession session) {
-		String attr = (String)session.getAttribute("account");
-		if(!StringUtils.hasText(attr)) {
-			 return new OrderRes(RtnCode.PLEASE_LOGIN_FIRST.getCode(),RtnCode.PLEASE_LOGIN_FIRST.getMessage());
-		 }
+//		String attr = (String)session.getAttribute("account");
+//		if(!StringUtils.hasText(attr)) {
+//			 return new OrderRes(RtnCode.PLEASE_LOGIN_FIRST.getCode(),RtnCode.PLEASE_LOGIN_FIRST.getMessage());
+//		 }
 		return orderService.create(req.isOneway(),req.getNumberOfPeople(),req.getArrivalDate(),req.getDepartureDate(),
 				req.getArrivalLocation(),req.getDepartureLocation(),req.getClassType(),req.getPrice(),
 				req.getAccount(),req.getDepatureTime(),req.getArriveTime(),req.getAddPeople(),req.getSeat());
-//		return orderService.create(0,0,req.getArrivalDate(),req.getDepartureDate(),"test",
-//				"test","test",false);
 	}
 
 	@PostMapping(value = "order/delete")
