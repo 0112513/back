@@ -53,6 +53,9 @@ public class Order {
 	
 	@Column(name = "add_people")
 	private String addPeople;
+	
+	@Column(name = "seat")
+	private String seat;
 
 	public Order() {
 		super();
@@ -61,7 +64,7 @@ public class Order {
 	
 	public Order(int orderId, boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation, String classType, int price, String account,
-			String depatureTime, String arriveTime, String addPeople) {
+			String depatureTime, String arriveTime, String addPeople, String seat) {
 		super();
 		this.orderId = orderId;
 		this.oneway = oneway;
@@ -76,11 +79,12 @@ public class Order {
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
 		this.addPeople = addPeople;
+		this.seat = seat;
 	}
 	
 	public Order(boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation, String classType, int price, String account,
-			String depatureTime, String arriveTime, String addPeople) {
+			String depatureTime, String arriveTime, String addPeople, String seat) {
 		super();
 		this.oneway = oneway;
 		this.numberOfPeople = numberOfPeople;
@@ -94,6 +98,7 @@ public class Order {
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
 		this.addPeople = addPeople;
+		this.seat = seat;
 	}
 
 	public int getOrderId() {
@@ -198,6 +203,14 @@ public class Order {
 
 	public void setAddPeople(String addPeople) {
 		this.addPeople = addPeople;
+	}
+
+	public String getSeat() {
+		return seat;
+	}
+
+	public void setSeat(String seat) {
+		this.seat = seat;
 	}
 	
 }

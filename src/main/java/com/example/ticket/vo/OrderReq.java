@@ -45,9 +45,12 @@ public class OrderReq {
 	@JsonProperty("addPeople")
 	private String addPeople;
 	
+	@JsonProperty("seat")
+	private String seat;
+	
 	public OrderReq(int orderId, boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation, String classType, int price, String account,
-			String depatureTime, String arriveTime, String addPeople) {
+			String depatureTime, String arriveTime, String addPeople, String seat) {
 		super();
 		this.orderId = orderId;
 		this.oneway = oneway;
@@ -62,11 +65,12 @@ public class OrderReq {
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
 		this.addPeople = addPeople;
+		this.seat = seat;
 	}
 	
 	public OrderReq(boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation, String classType, int price, String account,
-			String depatureTime, String arriveTime, String addPeople) {
+			String depatureTime, String arriveTime, String addPeople, String seat) {
 		super();
 		this.oneway = oneway;
 		this.numberOfPeople = numberOfPeople;
@@ -80,6 +84,7 @@ public class OrderReq {
 		this.depatureTime = depatureTime;
 		this.arriveTime = arriveTime;
 		this.addPeople = addPeople;
+		this.seat = seat;
 	}
 
 	public OrderReq() {
@@ -189,6 +194,14 @@ public class OrderReq {
 
 	public void setAddPeople(String addPeople) {
 		this.addPeople = addPeople;
+	}
+
+	public String getSeat() {
+		return seat;
+	}
+
+	public void setSeat(String seat) {
+		this.seat = seat;
 	}
 	
 }
