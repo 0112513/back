@@ -23,7 +23,11 @@ public interface UserDao extends  JpaRepository<User, Integer>{
 //	
 	public boolean existsByAccount(String account);
 	
+	public boolean existsByPwd(String pwd);
+	
 	public List<User> findByAccountAndPwd(String account,String pwd);
+	
+	
 	
 	@Query(value = "SELECT * FROM user WHERE"
 			+ " account like concat('%',:inputAccount,'%') and"

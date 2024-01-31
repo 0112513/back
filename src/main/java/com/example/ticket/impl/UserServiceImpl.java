@@ -2,15 +2,16 @@ package com.example.ticket.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.example.ticket.constants.RtnCode;
 import com.example.ticket.entity.User;
+import com.example.ticket.ifs.MailService;
 import com.example.ticket.ifs.UserService;
 import com.example.ticket.repository.UserDao;
 import com.example.ticket.vo.UserLoginGetRes;
@@ -23,6 +24,16 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired // 叫出Dao2的方法
 	private UserDao userDao;
+	
+
+    private MailService mailService; // 注入邮件服务
+
+	private JavaMailSender mailSender;
+	
+    @Autowired
+    public UserServiceImpl(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
 	@Override
 	public UserLoginRes login(String account, String pwd) {
@@ -40,6 +51,9 @@ public class UserServiceImpl implements UserService {
 		if (!userDao.existsByAccount(account)) {
 			return new UserLoginRes(RtnCode.ACCOUNT_NOT_EXIST);
 		}
+		if(!userDao.existsByPwd(pwd)) {
+			return new UserLoginRes(RtnCode.PASSWORD_INPUT_ERROR);
+		}
 		return new UserLoginRes(RtnCode.SUCCESSFUL);
 	}
 
@@ -54,7 +68,13 @@ public class UserServiceImpl implements UserService {
 			return new UserLoginRes(RtnCode.ACCOUNT_EXISTED);
 		}
 		userDao.save(new User(account, pwd, email, name, phone,age,birthday));
-//		userDao.save(new User(account, encoder.encode(pwd),email,name,phone));
+		       SimpleMailMessage message = new SimpleMailMessage();
+		        message.setFrom("happygoairplain@gmail.com");
+		        message.setTo(email);
+		        message.setSubject("有一則來自樂購航空的通知");
+		        message.setText("你已經成功註冊，歡迎加入樂購航空！！！");
+
+		        mailSender.send(message);
 		return new UserLoginRes(RtnCode.SUCCESSFUL);
 	}
 
@@ -68,5 +88,4 @@ public class UserServiceImpl implements UserService {
 		}
 		return new UserLoginGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
 	}
-//	香如讚讚
 }

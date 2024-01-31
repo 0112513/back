@@ -9,11 +9,14 @@ import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.example.ticket.constants.RtnCode;
 import com.example.ticket.entity.Order;
+import com.example.ticket.ifs.MailService;
 import com.example.ticket.ifs.OrderService;
 import com.example.ticket.repository.OrderDao;
 import com.example.ticket.vo.OrderGetRes;
@@ -26,6 +29,15 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private OrderDao orderDao;
+	
+    private MailService mailService; // 注入邮件服务
+
+	private JavaMailSender mailSender;
+	
+	@Autowired
+	public OrderServiceImpl(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 	
 	@Override
 	public OrderRes create(boolean oneway,int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
@@ -43,9 +55,13 @@ public class OrderServiceImpl implements OrderService {
 		} catch (Exception e) {
 			 return new OrderRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());
 		}
-//	    if (orderDao.existsById(orderId)) {
-//	        return new OrderRes(RtnCode.ORDER_EXISTED.getCode(), RtnCode.ORDER_EXISTED.getMessage());
-//	    }
+//	       SimpleMailMessage message = new SimpleMailMessage();
+//	        message.setFrom("happygoairplain@gmail.com");
+//	        message.setTo(email);
+//	        message.setSubject("有一則來自樂購航空的通知");
+//	        message.setText("你已經成功註冊，歡迎加入樂購航空！！！");
+//
+//	        mailSender.send(message);
 	    return new OrderRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage());
 	}
 	
