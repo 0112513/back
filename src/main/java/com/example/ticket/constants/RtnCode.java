@@ -22,6 +22,9 @@ package com.example.ticket.constants;
 	AIRPLAININFO_UPDATE_ERROR(400,"AirplainInfo update error!!"),
 	ORDER_NOT_FOUND(400,"Order not found!!!!"),
 	ORDER_DELETE_ERROR(400,"Order delete error!!!"),
+	USER_UPDATE_ERROR(400,"User update error!!"),
+	USER_UPDATE_SUCCESSFUL(400,"User update successful!!!!!!"),
+	USER_NOT_FOUND(400,"User not found!!!!!!"),
 	ORDER_EXISTED(400,"Order existed!!!!");
 
 	private int code;

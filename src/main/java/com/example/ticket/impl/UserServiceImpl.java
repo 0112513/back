@@ -2,6 +2,7 @@ package com.example.ticket.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -60,8 +61,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserLoginRes create(String account, String pwd, String email, String name, String phone, int age, String birthday) {
 		if (!StringUtils.hasText(account) || !StringUtils.hasText(pwd) || !StringUtils.hasText(email)
-				|| !StringUtils.hasText(name) || !StringUtils.hasText(phone)) { // 排除法:帳號或密碼不能為空(沒有內容時)
-																				// StringUtils不能為空或空字串
+				|| !StringUtils.hasText(name) || !StringUtils.hasText(phone) || age <= 0 || !StringUtils.hasText(birthday)) {
 			return new UserLoginRes(RtnCode.PARAM_ERROR); // 失敗，return到此方法，就跳出去
 		}
 		if (userDao.existsByAccount(account)) {
@@ -87,5 +87,43 @@ public class UserServiceImpl implements UserService {
 			return new UserLoginGetRes(RtnCode.ACCOUNT_NOT_EXIST.getCode(),RtnCode.ACCOUNT_NOT_EXIST.getMessage(),res);
 		}
 		return new UserLoginGetRes(RtnCode.SUCCESSFUL.getCode(), RtnCode.SUCCESSFUL.getMessage(), res);
+	}
+
+	@Override
+	public UserLoginRes update(int userId,String account, String pwd, String email, String name, String phone, int age,
+			String birthday) {
+		if ( !StringUtils.hasText(pwd) || !StringUtils.hasText(email)
+				|| !StringUtils.hasText(name) || !StringUtils.hasText(phone) || age <= 0 || !StringUtils.hasText(birthday)) {
+			return new UserLoginRes(RtnCode.PARAM_ERROR); // 失敗，return到此方法，就跳出去
+		}
+		Optional<User> op = userDao.findById(userId);
+		if(op.isEmpty()) {
+			return new UserLoginRes(RtnCode.USER_NOT_FOUND);
+		}
+		User user = op.get();
+		if(StringUtils.hasText(account)) {
+			user.setPwd(account);
+		}
+		if (userDao.existsByAccount(account)) {
+			return new UserLoginRes(RtnCode.ACCOUNT_EXISTED);
+		}
+		if(StringUtils.hasText(pwd)) {
+			user.setPwd(pwd);
+		}
+		if(StringUtils.hasText(name)) {
+			user.setName(name);
+		}
+		if(StringUtils.hasText(phone)) {
+			user.setPhone(phone);
+		}
+		if(StringUtils.hasText(birthday)) {
+			user.setBirthday(birthday);
+		}
+		try {
+			User res = userDao.save(new User(userId,account,pwd,email,name,phone,age,birthday)) ;
+		} catch (Exception e) {
+			return new UserLoginRes(RtnCode.USER_UPDATE_ERROR);
+		}
+		return new UserLoginRes(RtnCode.USER_UPDATE_SUCCESSFUL);
 	}
 }

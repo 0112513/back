@@ -70,6 +70,19 @@ public class User {
 		this.age = age;
 		this.birthday = birthday;
 	}
+	
+	public User(int userId, String account, String pwd, String email, String name, String phone, int age,
+			String birthday) {
+		super();
+		this.userId = userId;
+		this.account = account;
+		this.pwd = pwd;
+		this.email = email;
+		this.name = name;
+		this.phone = phone;
+		this.age = age;
+		this.birthday = birthday;
+	}
 
 	public int getUserId() {
 		return userId;

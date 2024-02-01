@@ -57,4 +57,11 @@ public class UserServiceController {
 	public UserLoginGetRes search(@RequestBody UserSearchReq req) {
 		return userService.search(req.getAccount(),req.getPassword());	
 	}
+	
+	@PostMapping(value = "user/update")
+	public UserLoginRes update(@RequestBody UserSearchReq req) {
+		return userService.update(req.getUserId(),req.getAccount(),req.getPassword(), 
+				req.getEmail(), req.getName(), req.getPhone(),req.getAge(),req.getBirthday());	
+	}
+	
 }
