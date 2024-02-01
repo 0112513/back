@@ -37,8 +37,8 @@ public class AirplainInfo {
 	@Column(name = "class_type")
 	private String classType;
 	
-	@Column(name = "seat")
-	private String seat;
+	@Column(name = "seat_num")
+	private int seatNum;
 	
 	@Column(name = "is_oneway")
 	private boolean isOneway;
@@ -76,7 +76,7 @@ public class AirplainInfo {
 	}
 	
 	public AirplainInfo(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
+			String arrivalLocation, int price, String classType, int seatNum, boolean isOneway, String dA, String aA,
 			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String depatureAirport,
 			String arriveAirport, String airplainType) {
 		super();
@@ -87,7 +87,7 @@ public class AirplainInfo {
 		this.arrivalLocation = arrivalLocation;
 		this.price = price;
 		this.classType = classType;
-		this.seat = seat;
+		this.seatNum = seatNum;
 		this.isOneway = isOneway;
 		DA = dA;
 		AA = aA;
@@ -101,7 +101,7 @@ public class AirplainInfo {
 	}
 	
 	public AirplainInfo(LocalDate departureDate, LocalDate arriveDate, String departureLocation, String arrivalLocation,
-			int price, String classType, String seat, boolean isOneway, String dA, String aA, int depatureTerminal,
+			int price, String classType, int seatNum, boolean isOneway, String dA, String aA, int depatureTerminal,
 			int arriveTerminal, String depatureTime, String arriveTime, String depatureAirport, String arriveAirport,
 			String airplainType) {
 		super();
@@ -111,7 +111,7 @@ public class AirplainInfo {
 		this.arrivalLocation = arrivalLocation;
 		this.price = price;
 		this.classType = classType;
-		this.seat = seat;
+		this.seatNum = seatNum;
 		this.isOneway = isOneway;
 		DA = dA;
 		AA = aA;
@@ -179,13 +179,13 @@ public class AirplainInfo {
 	public void setClassType(String classType) {
 		this.classType = classType;
 	}
-
-	public String getSeat() {
-		return seat;
+	
+	public int getSeatNum() {
+		return seatNum;
 	}
 
-	public void setSeat(String seat) {
-		this.seat = seat;
+	public void setSeatNum(int seatNum) {
+		this.seatNum = seatNum;
 	}
 
 	public boolean getIsOneway() {

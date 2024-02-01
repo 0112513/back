@@ -40,11 +40,11 @@ public class OrderServiceImpl implements OrderService {
 	public OrderRes create(boolean oneway,int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation,
 			String classType,int price,String account, String depatureTime,
-			String arriveTime, String addPeople, String seat) {
+			String arriveTime, String addPeople, String seat, int airplainId) {
 		if(numberOfPeople <= 0 ||  arrivalDate == null || departureDate == null
 			||!StringUtils.hasText(arrivalLocation) || !StringUtils.hasText(departureLocation) || !StringUtils.hasText(classType)
 			 ||  price <= 0 || !StringUtils.hasText(account) ||!StringUtils.hasText(depatureTime) || !StringUtils.hasText(arriveTime)
-			 || !StringUtils.hasText(seat)) {
+			 || !StringUtils.hasText(seat) || airplainId <= 0) {
 			return new OrderRes(RtnCode.PARAM_ERROR.getCode(), RtnCode.PARAM_ERROR.getMessage());
 		}
 		if(departureDate.isAfter(arrivalDate)) {
@@ -52,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		try {
 			Order item = new Order(oneway, numberOfPeople,arrivalDate,departureDate,arrivalLocation,
-					departureLocation,classType,price,account,depatureTime,arriveTime,addPeople,seat);
+					departureLocation,classType,price,account,depatureTime,arriveTime,addPeople,seat,airplainId);
 			orderDao.save(item);
 		} catch (Exception e) {
 			 return new OrderRes(RtnCode.ORDER_CREATE_ERROR.getCode(), RtnCode.ORDER_CREATE_ERROR.getMessage());

@@ -11,14 +11,14 @@ import com.example.ticket.vo.AirplainInfoRes;
 public interface AirplainInfoService {
 
 	public AirplainInfoRes create(LocalDate departureDate, LocalDate arriveDate, String departureLocation
-			, String arrivalLocation, int price, String classType, String seat, boolean isOneway, 
+			, String arrivalLocation, int price, String classType, int seatNum, boolean isOneway, 
 			String DA, String AA, int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, 
 			String depatureAirport, String arriveAirport, String airplainType); 
 	
 	public AirplainInfoRes delete(int i);
 	
 	public AirplainInfoRes update(int airplainId,LocalDate departureDate, LocalDate arriveDate, String departureLocation
-			, String arrivalLocation, int price, String classType, String seat, boolean isOneway, 
+			, String arrivalLocation, int price, String classType, int seatNum, boolean isOneway, 
 			String DA, String AA, int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime,
 			String depatureAirport, String arriveAirport, String airplainType);
 	

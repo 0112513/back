@@ -27,7 +27,7 @@ public class AirplainInfoServiceController {
 	public AirplainInfoRes create(@RequestBody AirplainInfoReq req,HttpSession session) {
 		return airplainInfoService.create(req.getDepartureDate(), req.getArriveDate(),
 				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(),
-				req.getSeat(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
+				req.getSeatNum(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
 				req.getDepatureTime(),req.getArriveTime(),req.getDepatureAirport(),req.getArriveAirport(),req.getAirplainType());
 	}
 	
@@ -46,7 +46,7 @@ public class AirplainInfoServiceController {
 	public AirplainInfoRes update(@RequestBody AirplainInfoReq req) {
 		return airplainInfoService.update(req.getAirplainId(),req.getDepartureDate(), req.getArriveDate(),
 				req.getDepartureLocation(),req.getArrivalLocation(),req.getPrice(),req.getClassType(),
-				req.getSeat(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
+				req.getSeatNum(),req.isOneway(),req.getDA(),req.getAA(),req.getDepatureTerminal(),req.getArriveTerminal(),
 				req.getDepatureTime(),req.getArriveTime(),req.getDepatureAirport(),req.getArriveAirport(),req.getAirplainType());
 	
 	}

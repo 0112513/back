@@ -12,7 +12,7 @@ public interface OrderService {
 
 	public OrderRes create(boolean oneway,int numberOfPeople,LocalDate arrivalDate,LocalDate departureDate
 			,String arrivalLocation,String departureLocation,String classType,int price
-			,String account,String depatureTime, String arriveTime, String addPeople,String seat);
+			,String account,String depatureTime, String arriveTime, String addPeople,String seat,int airplainId);
 	
 	
 	public OrderRes delete(int i, String account);

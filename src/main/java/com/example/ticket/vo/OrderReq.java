@@ -48,9 +48,12 @@ public class OrderReq {
 	@JsonProperty("seat")
 	private String seat;
 	
+	@JsonProperty("airplainId")
+	private int airplainId;
+	
 	public OrderReq(int orderId, boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation, String classType, int price, String account,
-			String depatureTime, String arriveTime, String addPeople, String seat) {
+			String depatureTime, String arriveTime, String addPeople, String seat, int airplainId) {
 		super();
 		this.orderId = orderId;
 		this.oneway = oneway;
@@ -66,11 +69,12 @@ public class OrderReq {
 		this.arriveTime = arriveTime;
 		this.addPeople = addPeople;
 		this.seat = seat;
+		this.airplainId = airplainId;
 	}
 	
 	public OrderReq(boolean oneway, int numberOfPeople, LocalDate arrivalDate, LocalDate departureDate,
 			String arrivalLocation, String departureLocation, String classType, int price, String account,
-			String depatureTime, String arriveTime, String addPeople, String seat) {
+			String depatureTime, String arriveTime, String addPeople, String seat, int airplainId) {
 		super();
 		this.oneway = oneway;
 		this.numberOfPeople = numberOfPeople;
@@ -85,6 +89,7 @@ public class OrderReq {
 		this.arriveTime = arriveTime;
 		this.addPeople = addPeople;
 		this.seat = seat;
+		this.airplainId = airplainId;
 	}
 
 	public OrderReq() {
@@ -202,6 +207,14 @@ public class OrderReq {
 
 	public void setSeat(String seat) {
 		this.seat = seat;
+	}
+
+	public int getAirplainId() {
+		return airplainId;
+	}
+
+	public void setAirplainId(int airplainId) {
+		this.airplainId = airplainId;
 	}
 	
 }

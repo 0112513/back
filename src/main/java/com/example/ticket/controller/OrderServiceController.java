@@ -32,7 +32,7 @@ public class OrderServiceController {
 //		 }
 		return orderService.create(req.isOneway(),req.getNumberOfPeople(),req.getArrivalDate(),req.getDepartureDate(),
 				req.getArrivalLocation(),req.getDepartureLocation(),req.getClassType(),req.getPrice(),
-				req.getAccount(),req.getDepatureTime(),req.getArriveTime(),req.getAddPeople(),req.getSeat());
+				req.getAccount(),req.getDepatureTime(),req.getArriveTime(),req.getAddPeople(),req.getSeat(),req.getAirplainId());
 	}
 
 	@PostMapping(value = "order/delete")

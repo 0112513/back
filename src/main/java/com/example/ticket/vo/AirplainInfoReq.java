@@ -29,8 +29,8 @@ public class AirplainInfoReq {
 	@JsonProperty("classType")
 	private String classType;
 	
-	@JsonProperty("seat")
-	private String seat;
+	@JsonProperty("seatNum")
+	private int seatNum;
 	
 	@JsonProperty("isOneway")
 	private boolean isOneway;
@@ -68,7 +68,7 @@ public class AirplainInfoReq {
 	}
 	
 	public AirplainInfoReq(int airplainId, LocalDate departureDate, LocalDate arriveDate, String departureLocation,
-			String arrivalLocation, int price, String classType, String seat, boolean isOneway, String dA, String aA,
+			String arrivalLocation, int price, String classType, int seatNum, boolean isOneway, String dA, String aA,
 			int depatureTerminal, int arriveTerminal, String depatureTime, String arriveTime, String depatureAirport,
 			String arriveAirport, String airplainType) {
 		super();
@@ -79,7 +79,7 @@ public class AirplainInfoReq {
 		this.arrivalLocation = arrivalLocation;
 		this.price = price;
 		this.classType = classType;
-		this.seat = seat;
+		this.seatNum = seatNum;
 		this.isOneway = isOneway;
 		DA = dA;
 		AA = aA;
@@ -147,13 +147,13 @@ public class AirplainInfoReq {
 	public void setClassType(String classType) {
 		this.classType = classType;
 	}
-
-	public String getSeat() {
-		return seat;
+	
+	public int getSeatNum() {
+		return seatNum;
 	}
 
-	public void setSeat(String seat) {
-		this.seat = seat;
+	public void setSeatNum(int seatNum) {
+		this.seatNum = seatNum;
 	}
 
 	public boolean isOneway() {
